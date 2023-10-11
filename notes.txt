@@ -1,0 +1,4 @@
+data types:
+
+Stack:
+LIFO, like a stack of books
