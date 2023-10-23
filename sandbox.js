@@ -62,6 +62,7 @@ console.log(myStack);
 
 function mySet() {
   const collection = [];
+  // this.collection = [];
 
   this.has = function (element) {
     return collection.indexOf(element) !== -1;
@@ -99,8 +100,12 @@ function mySet() {
   // return the intersection of 2 sets as a new set
   this.intersection = function (otherSet) {
     const intersect = new mySet();
-    const setA = this.values();
-    intersecfirst.forEach((el) => setA.add(el));
-    return setA;
+    const firstSet = this.values();
+
+    firstSet.forEach((el) => {
+      if (otherSet.has(el)) {
+        intersect.push(el);
+      }
+    });
   };
 }
