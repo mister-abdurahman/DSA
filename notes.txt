@@ -2,3 +2,6 @@ data types:
 
 Stack:
 LIFO, like a stack of books
+
+Sets:
+like array but without duplicate data

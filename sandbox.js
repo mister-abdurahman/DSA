@@ -104,8 +104,33 @@ function mySet() {
 
     firstSet.forEach((el) => {
       if (otherSet.has(el)) {
-        intersect.push(el);
+        intersect.add(el);
       }
     });
+    return intersect;
+  };
+
+  this.difference = function (otherSet) {
+    const diffSet = new mySet();
+    const firstSet = this.values();
+
+    firstSet.forEach((el) => {
+      if (!otherSet.has(el)) {
+        diffSet.add(el);
+      }
+    });
+    return diffSet;
   };
 }
+
+// tests if otherset is a subset of first set
+this.subset = function (otherSet) {
+  const firstSet = this.values();
+
+  return firstSet.every((el) => otherSet.has(el));
+};
+// 17:00
+const setA = new mySet();
+const setB = new mySet();
+setA.add("a");
+console.log("LG");
