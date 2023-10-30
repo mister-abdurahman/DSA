@@ -116,3 +116,48 @@ var rotate = function (nums, k) {
 // console.log(rotate([1, 2, 3, 4, 5, 6, 7], 3));
 
 // Contains Duplicate
+// nums = [1,2,3,1]
+
+// Mine ⭐
+function containsDuplicate(nums) {
+  return new Set(nums).size !== nums.length ? true : false;
+}
+// console.log(containsDuplicate([1, 2, 3, 4]));
+
+// Leetcoder
+function containsDuplicate1(nums) {
+  const hashMap = {};
+
+  for (let x = 0; x < nums.length; x++) {
+    if (hashMap[nums[x]] === true) {
+      return true;
+    } else {
+      hashMap[nums[x]] = true;
+    }
+  }
+  return false;
+}
+// console.log(containsDuplicate1([1, 2, 3, 4, 2, 2]));
+
+// Single Number
+
+const data = [2, 2, 1];
+// expected: 1
+
+function singleNumber(nums) {
+  const hashMap = {};
+  for (let x = 0; x < nums.length; x++) {
+    if (hashMap[nums[x]]) {
+      hashMap[nums[x]]++;
+    } else {
+      hashMap[nums[x]] = 1;
+    }
+  }
+  // return hashMap;
+  for (const [key, value] of Object.entries(hashMap)) {
+    if (value === 1) return key;
+  }
+}
+console.log(singleNumber([2, 2, 1]));
+
+// Intersection of 2 arrays:
