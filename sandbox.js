@@ -121,16 +121,103 @@ function mySet() {
     });
     return diffSet;
   };
+
+  // tests if otherset is a subset of first set
+  this.subset = function (otherSet) {
+    const firstSet = this.values();
+
+    return firstSet.every((el) => otherSet.has(el));
+  };
 }
 
-// tests if otherset is a subset of first set
-this.subset = function (otherSet) {
-  const firstSet = this.values();
-
-  return firstSet.every((el) => otherSet.has(el));
-};
 // 17:00
 const setA = new mySet();
 const setB = new mySet();
-setA.add("a");
-console.log("LG");
+setA.add("m");
+setA.add("i");
+setA.add("d");
+
+setB.add("a");
+setB.add("m");
+setB.add("i");
+setB.add("d");
+console.log(setB.intersection(setA).values());
+
+function Queue() {
+  const collection = [];
+
+  this.print = function () {
+    return collection;
+  };
+  this.enqueue = function (element) {
+    return collection.push(element);
+  };
+  this.dequeue = function () {
+    return collection.shift();
+  };
+  this.front = function () {
+    return collection[0];
+  };
+  this.size = function () {
+    return collection.length;
+  };
+  this.isEmpty = function () {
+    return collection.length === 0;
+  };
+}
+const a = new Queue();
+a.enqueue("a");
+a.enqueue("i");
+a.enqueue("r");
+a.dequeue();
+console.log(a.print());
+
+// arrange items in a queue based on its priority
+function PriorityQueue() {
+  const collection = [];
+
+  this.enqueue = function (element) {
+    if (collection.length === 0) {
+      collection.push(element);
+      return collection;
+    } else {
+      let added = false;
+      for (let i = 0; i < collection.length; i++) {
+        if (element[1] < collection[i][1]) {
+          collection.splice(i, 0, element);
+          added = true;
+          break;
+        }
+      }
+      if (!added) {
+        collection.push(element);
+      }
+    }
+  };
+  this.print = function () {
+    return collection;
+  };
+}
+const pq = new PriorityQueue();
+pq.enqueue(["dan", 4]);
+pq.enqueue(["mide", 2]);
+pq.enqueue(["ara", 1]);
+pq.enqueue(["rama", 3]);
+console.log(pq.print());
+
+//Binary search tree:
+
+class Node {
+  constructor(data, left = null, right = null) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+  add(data) {}
+}

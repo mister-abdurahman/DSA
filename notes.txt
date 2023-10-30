@@ -5,3 +5,15 @@ LIFO, like a stack of books
 
 Sets:
 like array but without duplicate data
+
+Queue: (& Priority queues)
+similar to stack but is FIFO
+
+Binary Search Tree: is a specific type of tree that can only have 2 nodes branch out from it
+is a way to organize our data to look like a tree, all data points in the tree are called nodes.
+some terms:
+root/parent: the first node that bears other nodes
+left/right-child: node that branches directly from the parent
+leaf: nodes without a child
+
+Binary search trees are ordered. each left child is less than its parent and each right side is greater than its parent.
