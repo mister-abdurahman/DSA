@@ -163,14 +163,20 @@ function singleNumber(nums) {
 // Intersection of 2 arrays:
 function IntersectionOfTwoArrays(nums1, nums2) {
   const res = [];
-  const shorterOne = nums1.length < nums2.length ? nums1 : nums2;
-  const longerOne = nums1.length > nums2.length ? nums1 : nums2;
-  for (let x = 0; x < shorterOne.length; x++) {
-    if (longerOne.includes(shorterOne[x])) {
-      res.push(shorterOne[x]);
-      shorterOne.splice(x, 1);
+  // const shorterOne = nums1.length < nums2.length ? nums1 : nums2;
+  // const longerOne = nums1.length > nums2.length ? nums1 : nums2;
+  // for (let x = 0; x < shorterOne.length; x++) {
+  //   if (longerOne.includes(shorterOne[x])) {
+  //     res.push(shorterOne[x]);
+  //     shorterOne.splice(x, 1);
+  //   }
+  // }
+  for (let x = 0; x < nums1.length; x++) {
+    if (nums2.includes(nums1[x])) {
+      res.push(nums1[x]);
+      nums1.splice(x, 1);
     }
   }
   return res;
 }
-console.log(IntersectionOfTwoArrays([3, 1, 2], [1, 1]));
+console.log(IntersectionOfTwoArrays([1, 2], [1, 1]));
