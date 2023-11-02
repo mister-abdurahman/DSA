@@ -161,22 +161,39 @@ function singleNumber(nums) {
 // console.log(singleNumber([2, 2, 1]));
 
 // Intersection of 2 arrays:
-function IntersectionOfTwoArrays(nums1, nums2) {
-  const res = [];
-  // const shorterOne = nums1.length < nums2.length ? nums1 : nums2;
-  // const longerOne = nums1.length > nums2.length ? nums1 : nums2;
-  // for (let x = 0; x < shorterOne.length; x++) {
-  //   if (longerOne.includes(shorterOne[x])) {
-  //     res.push(shorterOne[x]);
-  //     shorterOne.splice(x, 1);
-  //   }
-  // }
-  for (let x = 0; x < nums1.length; x++) {
-    if (nums2.includes(nums1[x])) {
-      res.push(nums1[x]);
-      nums1.splice(x, 1);
-    }
-  }
-  return res;
+
+// Leetcoder 🌟
+function longOrShort(nums1, nums2) {
+  if (nums1.length <= nums2.length)
+    return IntersectionOfTwoArrays(nums1, nums2);
+  else return IntersectionOfTwoArrays(nums2, nums1);
 }
-console.log(IntersectionOfTwoArrays([1, 2], [1, 1]));
+
+var IntersectionOfTwoArrays = function (nums1, nums2) {
+  const res = [];
+  nums1.map((item) => {
+    if (nums2.includes(item)) {
+      res.push(item);
+      nums2.splice(nums2.indexOf(item), 1);
+    }
+  });
+
+  return res;
+};
+
+// function IntersectionOfTwoArrays1(nums1, nums2) {
+//   const res = [];
+//   const shorterOne = nums1.length < nums2.length ? nums1 : nums2;
+//   const longerOne = nums1.length > nums2.length ? nums1 : nums2;
+
+//   shorterOne.map((item) => {
+//     if (longerOne.includes(item)) {
+//       res.push(item);
+//       longerOne.splice(longerOne.indexOf(item), 1);
+//     }
+//   });
+
+//   return res;
+// }
+// console.log(IntersectionOfTwoArrays([1, 2, 2, 1], [2, 2]));
+// console.log(longOrShort([1, 2, 2, 1], [2, 2]));
