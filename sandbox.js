@@ -165,12 +165,12 @@ function Queue() {
     return collection.length === 0;
   };
 }
-const a = new Queue();
-a.enqueue("a");
-a.enqueue("i");
-a.enqueue("r");
-a.dequeue();
-console.log(a.print());
+const aaa = new Queue();
+aaa.enqueue("aaa");
+aaa.enqueue("i");
+aaa.enqueue("r");
+aaa.dequeue();
+console.log(aaa.print());
 
 // arrange items in a queue based on its priority
 function PriorityQueue() {
@@ -221,3 +221,153 @@ class BST {
   }
   add(data) {}
 }
+
+// SetTimer that prints elements of an array every 500ms.
+const theArray = [1, 2, 3, 4, 5];
+
+// function theFn() {
+//   theArray.forEach((el) => console.log(el));
+// }
+
+// setInterval(theFn, 1000);
+
+let currentIndex = 0;
+function tets() {
+  if (currentIndex < theArray.length) {
+    console.log(theArray[currentIndex]);
+    currentIndex++;
+  } else {
+    clearInterval(intervalId);
+  }
+}
+
+// const intervalId = setInterval(tets, 1000);
+
+// const items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+// let currentIndex = 0;
+
+// function printNextItem() {
+//   if (currentIndex < items.length) {
+//     console.log(items[currentIndex]);
+//     currentIndex++;
+//   } else {
+//     // If all items are printed, clear the interval
+//     clearInterval(intervalId);
+//   }
+// }
+
+// Set up the interval to call the printNextItem function every 1 second
+// const intervalId = setInterval(printNextItem, 1000);
+
+// turing test:
+const test1 = ["5", "2", "C", "D", "+"];
+// ans = 30
+// c : pop last score
+// d : record new score that is doble previous score
+// + : record new score that is sum of last 2 previous scores
+
+function Mock(ops) {
+  const ans = [];
+  for (let x = 0; x < ops.length; x++) {
+    if (ops[x] !== "C" && ops[x] !== "D" && ops[x] !== "+") {
+      ans.push(parseInt(ops[x]));
+    }
+    if (ops[x] === "C") {
+      ans.pop();
+    }
+    if (ops[x] === "D") {
+      ans.push(parseInt(ans[ans.length - 1]) * 2);
+    }
+    if (ops[x] === "+") {
+      // console.log(ops[x]);
+      ans.push(parseInt(ans[ans.length - 1]) + parseInt(ans[ans.length - 2]));
+    }
+  }
+
+  // return ans;
+  return ans.reduce((acc, cur) => acc + cur, 0);
+}
+
+// console.log(Mock(test1));
+// console.log(Mock([5, -2, 4, "C", "D", 9, "+", "+"]));
+
+const testData1 = "popokpo";
+const testData2 = "po";
+// answer = 2
+
+function tunko(sentence, word) {
+  let count = 0;
+  let wordTracker = 0;
+
+  for (let x = 0; x < sentence.length; x++) {
+    if (sentence[x] === word[wordTracker]) {
+      wordTracker++;
+      if (wordTracker === word.length) {
+        count++;
+        wordTracker = 0;
+      }
+    } else if (count > 0) return count;
+  }
+  return count;
+}
+// console.log(tunko(testData1, testData2));
+
+function countSimultaneousOccurrences(sentence, word) {
+  let count = 0;
+  let sentenceIndex = 0; //is used to track the completion of a successfull comparision
+
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] === word[sentenceIndex]) {
+      sentenceIndex++;
+      if (sentenceIndex === word.length) {
+        count++;
+        sentenceIndex = 0;
+      }
+    } else if (count > 0) return count;
+  }
+  return count;
+}
+
+// Example usage:
+const sentence = "popokpo";
+const word1 = "po";
+// const result = countSimultaneousOccurrences(sentence, word1);
+// console.log(result); // Output: 2
+
+// Persons with same properties:
+const k = [
+  ["male", "jake", 19],
+  ["female", "jane", 14],
+  ["female", "jessica", 39],
+];
+const a = "gender"; //gender, name, age
+const b = "male";
+// output: 1
+
+function sameProperties(k, a, b) {
+  let count = 0;
+
+  for (let i = 0; i < k.length; i++) {
+    if (a === "gender") {
+      if (k[i][0] === b) count++;
+    }
+    if (a === "name") {
+      if (k[i][1] === b) count++;
+    }
+    if (a === "age") {
+      if (k[i][2] === b) count++;
+    }
+  }
+  return count;
+}
+console.log(
+  sameProperties(
+    [
+      ["male", "jake", 19],
+      ["female", "jane", 14],
+      ["female", "jessica", 39],
+    ],
+    "gender",
+    "male"
+  )
+);

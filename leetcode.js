@@ -177,7 +177,6 @@ var IntersectionOfTwoArrays = function (nums1, nums2) {
       nums2.splice(nums2.indexOf(item), 1);
     }
   });
-
   return res;
 };
 
